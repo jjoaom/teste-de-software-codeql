@@ -1,7 +1,11 @@
 import Head from "next/head";
 import { Geist, Geist_Mono } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import Calculator from "./Calculator";
+import XSSComponent from "./XSSComponent";
+import EvalComponent from "./EvalComponent";
+import SecretComponent from "./SecretComponent";
+import SQLInjectionComponent from "./SQLInjectionComponent";
+import UnsafeHandler from "./UnsafeHandler";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +27,40 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div
-        className={`container ${geistSans.variable} ${geistMono.variable}`}
+        className={`container-fluid ${geistSans.variable} ${geistMono.variable} py-4`}
       >
-        <Calculator />
+        <div className="row">
+          <div className="col-12 col-lg-7">
+            <Calculator />
+          </div>
+          <div className="col-12 col-lg-3">
+            <div className="card mb-3">
+              <div className="card-body">
+                <XSSComponent />
+              </div>
+            </div>
+            <div className="card mb-3">
+              <div className="card-body">
+                <EvalComponent />
+              </div>
+            </div>
+            <div className="card mb-3">
+              <div className="card-body">
+                <SecretComponent />
+              </div>
+            </div>
+            <div className="card mb-3">
+              <div className="card-body">
+                <SQLInjectionComponent />
+              </div>
+            </div>
+            <div className="card">
+              <div className="card-body">
+                <UnsafeHandler />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );
