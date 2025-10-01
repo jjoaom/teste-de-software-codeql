@@ -1,4 +1,4 @@
-name: "CodeQL Advanced with Custom Queries"
+name: "CodeQL Extra Queries"
 
 on:
   push:
@@ -8,44 +8,19 @@ on:
 
 jobs:
   analyze:
-    name: Analyze (${{ matrix.language }})
-    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    runs-on: ubuntu-latest
     permissions:
       security-events: write
-      packages: read
-      actions: read
-      contents: read
-
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - language: actions
-            build-mode: none
-          - language: javascript-typescript
-            build-mode: none
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      # Inicializa o CodeQL CLI
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: ${{ matrix.language }}
-          build-mode: ${{ matrix.build-mode }}
+          languages: javascript
 
-      # Se precisar de build manual, configure aqui
-      - if: matrix.build-mode == 'manual'
-        shell: bash
-        run: |
-          echo 'Manual build required. Coloque aqui seus comandos de build.'
-          exit 1
-
-      # Rodar análise oficial + queries customizadas
-      - name: Perform CodeQL Analysis
+      - name: Perform CodeQL Analysis (Custom Queries Only)
         uses: github/codeql-action/analyze@v3
         with:
-          category: "/language:${{matrix.language}}"
           extra-queries: codeql-custom-queries-javascript/src
