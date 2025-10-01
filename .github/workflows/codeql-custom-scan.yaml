@@ -1,4 +1,4 @@
-name: "CodeQL Extra Queries"
+name: "CodeQL Custom JS Analysis"
 
 on:
   push:
@@ -13,14 +13,20 @@ jobs:
       security-events: write
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
+      # Inicializa o CodeQL CLI
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
         with:
           languages: javascript
 
-      - name: Perform CodeQL Analysis (Custom Queries Only)
+      # Rodar análise oficial + queries customizadas
+      - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
+          # Você pode deixar category como javascript
+          category: "/language:javascript"
+          # Pastas com suas queries customizadas
           extra-queries: codeql-custom-queries-javascript/src
