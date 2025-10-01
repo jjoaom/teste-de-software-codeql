@@ -1,0 +1,16 @@
+[2025-10-01 15:24:18] This is codeql database analyze myReactDB \ --format=sarif-latest \ --output=resultado.sarif \ codeql/javascript-queries
+[2025-10-01 15:24:18] Log file was started late.
+[2025-10-01 15:24:18] [PROGRESS] database analyze> Running queries.
+[2025-10-01 15:24:18] Running plumbing command: codeql database run-queries --evaluator-log-level=5 --warnings=show --qlconfig-file=D:\dev\PUC eng software\software-test\codeql-test\qlconfig.yml --dynamic-join-order-mode=none --no-rerun -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB \ \ \ codeql/javascript-queries
+[2025-10-01 15:24:18] Calling plumbing command: codeql resolve ram --dataset=D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript --format=json
+[2025-10-01 15:24:18] [PROGRESS] resolve ram> Stringpool size measured as 5013930
+[2025-10-01 15:24:18] Plumbing command codeql resolve ram completed:
+                      [
+                        "-J-Xmx1800M",
+                        "--off-heap-ram=1542"
+                      ]
+[2025-10-01 15:24:18] Spawning plumbing command: execute queries -J-Xmx1800M --off-heap-ram=1542 --verbosity=progress --logdir=D:\dev\PUC eng software\software-test\codeql-test\myReactDB\log --evaluator-log-level=5 --warnings=show --qlconfig-file=D:\dev\PUC eng software\software-test\codeql-test\qlconfig.yml --dynamic-join-order-mode=none --no-rerun --output=D:\dev\PUC eng software\software-test\codeql-test\myReactDB\results -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript \ \ \ codeql/javascript-queries
+[2025-10-01 15:28:23] [ERROR] Spawned process exited abnormally (code 2; tried to run: [D:\dev\codeql\tools\win64\java\bin\java.exe, -Xmx1800M, "-Djava.library.path=D:\dev\codeql\tools\win64\java\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Microsoft SDKs\Azure\CLI2\wbin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\java8path;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\dotnet\;C:\Program Files\Docker\Docker\resources\bin;C:\Users\joaom\AppData\Local\Programs\oh-my-posh\bin\;C:\Users\joaom\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\joaom\AppData\Local\Programs\Python\Python310\;C:\Users\joaom\AppData\Local\Microsoft\WindowsApps;C:\Users\joaom\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\joaom\AppData\Roaming\npm;C:\Program Files\Java\jdk-21\bin;C:\Users\joaom\.dotnet\tools;C:\Program Files (x86)\Nmap;D:\dev\codeql;;.", -cp, D:\dev\codeql\tools\codeql.jar, com.semmle.cli2.CodeQL, env_argv, execute, queries, -J-Xmx1800M, _, _, _, _, _, _, _, --no-rerun, _, --, _, _, _, _, codeql/javascript-queries])
+[2025-10-01 15:28:23] Plumbing command codeql execute queries terminated with status 2.
+[2025-10-01 15:28:23] Plumbing command codeql database run-queries completed with status 2.
+[2025-10-01 15:28:23] Exiting with code 2

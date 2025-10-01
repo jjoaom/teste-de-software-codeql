@@ -1,0 +1,853 @@
+[2025-10-01 13:22:21] This is codeql database create myReactDB --language=javascript --source-root=./src
+[2025-10-01 13:22:21] Log file was started late.
+[2025-10-01 13:22:21] [PROGRESS] database create> Initializing database at D:\dev\PUC eng software\software-test\codeql-test\myReactDB.
+[2025-10-01 13:22:21] Running plumbing command: codeql database init --language=javascript --extractor-options-verbosity=1 --qlconfig-file=D:\dev\PUC eng software\software-test\codeql-test\qlconfig.yml --source-root=D:\dev\PUC eng software\software-test\codeql-test\src --allow-missing-source-root=false --allow-already-existing -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB
+[2025-10-01 13:22:21] Calling plumbing command: codeql resolve languages --extractor-options-verbosity=1 --format=betterjson
+[2025-10-01 13:22:21] [DETAILS] resolve languages> Scanning for [codeql-extractor.yml] from D:\dev\codeql\.codeqlmanifest.json
+[2025-10-01 13:22:21] [DETAILS] resolve languages> Parsing D:\dev\codeql\actions\codeql-extractor.yml.
+[2025-10-01 13:22:21] [DETAILS] resolve languages> Parsing D:\dev\codeql\cpp\codeql-extractor.yml.
+[2025-10-01 13:22:21] [DETAILS] resolve languages> Parsing D:\dev\codeql\csharp\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\csv\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\go\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\html\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\java\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\javascript\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\properties\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\python\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\ruby\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\rust\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\swift\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\xml\codeql-extractor.yml.
+[2025-10-01 13:22:22] [DETAILS] resolve languages> Parsing D:\dev\codeql\yaml\codeql-extractor.yml.
+[2025-10-01 13:22:22] Plumbing command codeql resolve languages completed:
+                      {
+                        "aliases" : {
+                          "c" : "cpp",
+                          "c++" : "cpp",
+                          "c-c++" : "cpp",
+                          "c-cpp" : "cpp",
+                          "c#" : "csharp",
+                          "java-kotlin" : "java",
+                          "kotlin" : "java",
+                          "javascript-typescript" : "javascript",
+                          "typescript" : "javascript"
+                        },
+                        "extractors" : {
+                          "actions" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\actions",
+                              "extractor_options" : { }
+                            }
+                          ],
+                          "cpp" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\cpp",
+                              "extractor_options" : {
+                                "scale_timeouts" : {
+                                  "title" : "Value to scale compiler introspection timeouts with",
+                                  "description" : "The extractor attempts to determine what compiler the source code being extracted is compiled with. To this end the extractor makes additional calls to the compiler, some of which are expected to return within a certain fixed time (either 10s or 15s). On some systems that are under high load this time might be too short, and can be scaled up using this option.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-9]+"
+                                },
+                                "log_verbosity" : {
+                                  "title" : "Verbosity of the extractor logging",
+                                  "description" : "Set the verbosity of the extractor logging to 'quiet' (0), 'normal' (1), 'chatty' (2), or 'noisy' (3). The default is 'normal'.\n",
+                                  "type" : "string",
+                                  "pattern" : "[0-3]"
+                                }
+                              }
+                            }
+                          ],
+                          "csharp" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\csharp",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'brotli' (the default, to write brotli-compressed TRAP), 'gzip', and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|brotli)$"
+                                    }
+                                  }
+                                },
+                                "buildless" : {
+                                  "title" : "DEPRECATED - Whether to use buildless (standalone) extraction.",
+                                  "description" : "DEPRECATED: Use `--build-mode none` instead.\nA value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "binlog" : {
+                                  "title" : "Binlog",
+                                  "description" : "[EXPERIMENTAL] The value is a path to the MsBuild binary log file that should be extracted. This option only works when `--build-mode none` is also specified.\n",
+                                  "type" : "array"
+                                }
+                              }
+                            }
+                          ],
+                          "csv" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\csv"
+                            }
+                          ],
+                          "go" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\go",
+                              "extractor_options" : {
+                                "extract_tests" : {
+                                  "title" : "Whether to include Go test files in the CodeQL database.",
+                                  "description" : "A value indicating whether Go test files should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "extract_vendor_dirs" : {
+                                  "title" : "Whether to include Go vendor directories in the CodeQL database.",
+                                  "description" : "A value indicating whether Go vendor directories should be included in the CodeQL database. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "html" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\html"
+                            }
+                          ],
+                          "java" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\java",
+                              "extractor_options" : {
+                                "exclude" : {
+                                  "title" : "A glob excluding files from analysis.",
+                                  "description" : "A glob indicating what files to exclude from the analysis. This accepts glob patterns that are supported by Java's 'getPathMatcher' implementation.\n",
+                                  "type" : "string"
+                                },
+                                "add_prefer_source" : {
+                                  "title" : "Whether to always prefer source files over class files.",
+                                  "description" : "A value indicating whether source files should be preferred over class files. If set to 'true', the extraction adds '-Xprefer:source' to the javac command line. If set to 'false', the extraction uses the default javac behavior ('-Xprefer:newer'). The default is 'true'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless" : {
+                                  "title" : "Whether to use buildless (standalone) extraction (experimental).",
+                                  "description" : "A value indicating, which type of extraction the autobuilder should perform. If 'true', then the standalone extractor will be used, otherwise tracing extraction will be performed. The default is 'false'. Note that buildless extraction will generally yield less accurate analysis results, and should only be used in cases where it is not possible to build the code (for example if it uses inaccessible dependencies).\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                },
+                                "buildless_dependency_dir" : {
+                                  "title" : "The path where buildless (standalone) extraction should keep dependencies.",
+                                  "description" : "If set, the buildless (standalone) extractor will store dependencies in this directory.\n",
+                                  "type" : "string"
+                                },
+                                "minimize_dependency_jars" : {
+                                  "title" : "Whether to rewrite and minimize downloaded JAR dependencies (experimental).",
+                                  "description" : "If 'true', JAR dependencies downloaded during extraction will be rewritten to remove unneeded data, such as method bodies. The default is 'false'.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "javascript" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\javascript",
+                              "extractor_options" : {
+                                "skip_types" : {
+                                  "title" : "Skip type extraction for TypeScript",
+                                  "description" : "Whether to skip the extraction of types in a TypeScript application",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "properties" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\properties"
+                            }
+                          ],
+                          "python" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\python",
+                              "extractor_options" : {
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Python extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the CodeQL Python extractor.\nThe supported levels are (in order of increasing verbosity):\n\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    }
+                                  }
+                                },
+                                "python_executable_name" : {
+                                  "title" : "Controls the name of the Python executable used by the Python extractor.",
+                                  "description" : "The Python extractor uses platform-dependent heuristics to determine the name of the Python executable to use. Specifying a value for this option overrides the name of the Python executable used by the extractor. Accepted values are py, python and python3. Use this setting with caution, the Python extractor requires Python 3 to run.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(py|python|python3)$"
+                                }
+                              }
+                            }
+                          ],
+                          "ruby" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\ruby",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (the default, to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|zstd)$"
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          ],
+                          "rust" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\rust",
+                              "extractor_options" : {
+                                "trap" : {
+                                  "title" : "Options pertaining to TRAP.",
+                                  "description" : "Options pertaining to TRAP.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "compression" : {
+                                      "title" : "Controls compression for the TRAP files written by the extractor.",
+                                      "description" : "This option is only intended for use in debugging the extractor. Accepted values are 'gzip' (to write gzip-compressed TRAP) 'zstd' (to write Zstandard-compressed TRAP) and 'none' (the default, to write uncompressed TRAP).\n",
+                                      "type" : "string",
+                                      "pattern" : "^(none|gzip|zstd)$"
+                                    }
+                                  }
+                                },
+                                "cargo_target_dir" : {
+                                  "title" : "Directory to use for cargo output files.",
+                                  "description" : "This value is an optional path to use as `CARGO_TARGET_DIR` for the internal cargo commands the extractor uses. Pointing it to a persistent directory may reduce execution time of consecutive extractor runs. By default, a new scratch directory is used for each run.\n",
+                                  "type" : "string"
+                                },
+                                "cargo_target" : {
+                                  "title" : "Target architecture",
+                                  "description" : "Target architecture to use for analysis, analogous to `cargo --target`. By default the host architecture is used.\n",
+                                  "type" : "string"
+                                },
+                                "cargo_features" : {
+                                  "title" : "Cargo features to turn on",
+                                  "description" : "Comma-separated list of features to turn on. By default all features are enabled. If any features are specified, then only those features are enabled. The `default` feature must be explicitly specified if only default features are desired. Can be repeated.\n",
+                                  "type" : "array"
+                                },
+                                "cargo_cfg_overrides" : {
+                                  "title" : "Cargo cfg overrides",
+                                  "description" : "Comma-separated list of cfg settings to enable, or disable if prefixed with `-`. Can be repeated.\n",
+                                  "type" : "array"
+                                },
+                                "logging" : {
+                                  "title" : "Options pertaining to logging.",
+                                  "description" : "Options pertaining to logging.",
+                                  "type" : "object",
+                                  "properties" : {
+                                    "verbosity" : {
+                                      "title" : "Extractor logging verbosity level.",
+                                      "description" : "Controls the level of verbosity of the extractor. The supported levels are (in order of increasing verbosity):\n  - off\n  - errors\n  - warnings\n  - info or progress\n  - debug or progress+\n  - trace or progress++\n  - progress+++\n",
+                                      "type" : "string",
+                                      "pattern" : "^(off|errors|warnings|(info|progress)|(debug|progress\\+)|(trace|progress\\+\\+)|progress\\+\\+\\+)$"
+                                    },
+                                    "flamegraph" : {
+                                      "title" : "[Experimental] File path for write flame graph log",
+                                      "description" : "Collect flame graph data using the `tracing-flame` crate. To render a flame graph or chart, run the `inferno-flamegraph` command. See also: https://crates.io/crates/tracing-flame\n",
+                                      "type" : "string"
+                                    }
+                                  }
+                                },
+                                "extract_dependencies_as_source" : {
+                                  "title" : "Extract dependencies as source code",
+                                  "description" : "Extract the full source code of dependencies instead of only extracting signatures.\n",
+                                  "type" : "string",
+                                  "pattern" : "^(false|true)$"
+                                }
+                              }
+                            }
+                          ],
+                          "swift" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\swift"
+                            }
+                          ],
+                          "xml" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\xml"
+                            }
+                          ],
+                          "yaml" : [
+                            {
+                              "extractor_root" : "D:\\dev\\codeql\\yaml"
+                            }
+                          ]
+                        }
+                      }
+[2025-10-01 13:22:22] [PROGRESS] database init> Calculating baseline information in D:\dev\PUC eng software\software-test\codeql-test\src
+[2025-10-01 13:22:22] [SPAMMY] database init> Ignoring the following directories when processing baseline information: .git, .hg, .svn.
+[2025-10-01 13:22:22] [DETAILS] database init> Running command in D:\dev\PUC eng software\software-test\codeql-test\src: D:\dev\codeql\tools\win64\scc.exe --by-file --exclude-dir .git,.hg,.svn --format json --no-large --no-min .
+[2025-10-01 13:22:23] Using configure-baseline script D:\dev\codeql\javascript\tools\configure-baseline.cmd.
+[2025-10-01 13:22:23] [PROGRESS] database init> Running command in D:\dev\PUC eng software\software-test\codeql-test\src: [D:\dev\codeql\javascript\tools\configure-baseline.cmd]
+[2025-10-01 13:22:23] [SPAMMY] database init> Found 5 baseline files for javascript.
+[2025-10-01 13:22:23] [PROGRESS] database init> Calculated baseline information for languages: javascript (833ms).
+[2025-10-01 13:22:23] [PROGRESS] database init> Resolving extractor javascript.
+[2025-10-01 13:22:23] [DETAILS] database init> Found candidate extractor root for javascript: D:\dev\codeql\javascript.
+[2025-10-01 13:22:23] [PROGRESS] database init> Successfully loaded extractor JavaScript/TypeScript (javascript) from D:\dev\codeql\javascript.
+[2025-10-01 13:22:23] [PROGRESS] database init> Created skeleton CodeQL database at D:\dev\PUC eng software\software-test\codeql-test\myReactDB. This in-progress database is ready to be populated by an extractor.
+[2025-10-01 13:22:23] Plumbing command codeql database init completed.
+[2025-10-01 13:22:23] [PROGRESS] database create> Running build command: []
+[2025-10-01 13:22:23] Running plumbing command: codeql database trace-command --working-dir=D:\dev\PUC eng software\software-test\codeql-test\src --index-traceless-dbs --no-db-cluster -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB
+[2025-10-01 13:22:23] Using autobuild script D:\dev\codeql\javascript\tools\autobuild.cmd.
+[2025-10-01 13:22:23] [PROGRESS] database trace-command> Running command in D:\dev\PUC eng software\software-test\codeql-test\src: [D:\dev\codeql\javascript\tools\autobuild.cmd]
+[2025-10-01 13:22:24] [build-stdout] Single-threaded extraction.
+[2025-10-01 13:22:24] [build-stdout] Found Node.js at: node
+[2025-10-01 13:22:24] [build-stdout] Found Node.js version: v22.18.0
+[2025-10-01 13:22:24] [build-stdout] Memory for TypeScript process: 2000 MB, and 400 MB reserve
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\api\hello.ts
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\api\hello.ts (325 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\Calculator.tsx
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\Calculator.tsx (59 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\index.tsx
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\index.tsx (17 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\_app.tsx
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\_app.tsx (9 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\_document.tsx
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\PUC eng software\software-test\codeql-test\src\pages\_document.tsx (11 ms)
+[2025-10-01 13:22:25] [build-stderr] No externs trap cache found
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es2016.js
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es2016.js (37 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es2017.js
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es2017.js (52 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es3.js
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es3.js (198 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es5.js
+[2025-10-01 13:22:25] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es5.js (44 ms)
+[2025-10-01 13:22:25] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es6.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es6.js (120 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\es6_collections.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\es6_collections.js (38 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\intl.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\intl.js (39 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\es\proxy.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\es\proxy.js (24 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\lib\bdd.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\lib\bdd.js (35 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\lib\jquery-3.2.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\lib\jquery-3.2.js (154 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\lib\should.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\lib\should.js (49 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\lib\vows.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\lib\vows.js (43 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\assert.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\assert.js (40 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\assert_legacy.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\assert_legacy.js (19 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\buffer.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\buffer.js (34 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\child_process.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\child_process.js (74 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\cluster.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\cluster.js (79 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\console.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\console.js (23 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\constants.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\constants.js (101 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\crypto.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\crypto.js (70 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\dgram.js
+[2025-10-01 13:22:26] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\dgram.js (51 ms)
+[2025-10-01 13:22:26] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\dns.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\dns.js (44 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\domain.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\domain.js (29 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\events.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\events.js (33 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\fs.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\fs.js (100 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\globals.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\globals.js (109 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\http.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\http.js (56 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\https.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\https.js (36 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\module.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\module.js (27 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\net.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\net.js (43 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\os.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\os.js (32 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\path.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\path.js (35 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\process.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\process.js (22 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\punycode.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\punycode.js (25 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\querystring.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\querystring.js (29 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\readline.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\readline.js (32 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\repl.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\repl.js (29 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\stream.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\stream.js (61 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\string_decoder.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\string_decoder.js (26 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\sys.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\sys.js (22 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\timers.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\timers.js (28 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\tls.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\tls.js (43 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\tty.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\tty.js (29 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\url.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\url.js (27 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\util.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\util.js (33 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\v8.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\v8.js (25 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\vm.js
+[2025-10-01 13:22:27] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\vm.js (30 ms)
+[2025-10-01 13:22:27] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\zlib.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\nodejs\zlib.js (39 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\vm\jsshell.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\vm\jsshell.js (47 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\vm\rhino.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\vm\rhino.js (21 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\vm\spidermonkey.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\vm\spidermonkey.js (17 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\vm\v8.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\vm\v8.js (511 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\chrome.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\chrome.js (41 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\fetchapi.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\fetchapi.js (38 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\fileapi.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\fileapi.js (55 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\flash.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\flash.js (29 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_css.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_css.js (30 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_dom.js
+[2025-10-01 13:22:28] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_dom.js (50 ms)
+[2025-10-01 13:22:28] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_event.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_event.js (187 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_ext.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_ext.js (16 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_xml.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\gecko_xml.js (19 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\html5.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\html5.js (177 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_css.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_css.js (26 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_dom.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_dom.js (59 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_event.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_event.js (29 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_vml.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\ie_vml.js (17 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\intl.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\intl.js (25 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\iphone.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\iphone.js (22 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\mediasource.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\mediasource.js (25 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\page_visibility.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\page_visibility.js (15 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\streamsapi.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\streamsapi.js (36 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\url.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\url.js (24 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_anim_timing.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_anim_timing.js (22 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_batterystatus.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_batterystatus.js (18 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_css.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_css.js (87 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_css3d.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_css3d.js (28 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_device_sensor_event.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_device_sensor_event.js (22 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom1.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom1.js (55 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom2.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom2.js (88 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom3.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom3.js (62 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom4.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_dom4.js (19 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_elementtraversal.js
+[2025-10-01 13:22:29] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_elementtraversal.js (20 ms)
+[2025-10-01 13:22:29] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_encoding.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_encoding.js (18 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_event.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_event.js (37 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_event3.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_event3.js (18 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_gamepad.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_gamepad.js (18 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_geolocation.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_geolocation.js (23 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_indexeddb.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_indexeddb.js (45 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_midi.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_midi.js (29 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_navigation_timing.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_navigation_timing.js (27 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_permissions.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_permissions.js (492 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_pointer_events.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_pointer_events.js (23 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_range.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_range.js (99 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_requestidlecallback.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_requestidlecallback.js (19 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_rtc.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_rtc.js (86 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_screen_orientation.js
+[2025-10-01 13:22:30] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_screen_orientation.js (18 ms)
+[2025-10-01 13:22:30] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_selectors.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_selectors.js (62 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_serviceworker.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_serviceworker.js (39 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_touch_event.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_touch_event.js (25 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_webcrypto.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_webcrypto.js (30 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_xml.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\w3c_xml.js (39 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webgl.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webgl.js (127 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_css.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_css.js (60 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_dom.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_dom.js (30 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_event.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_event.js (18 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_notifications.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_notifications.js (25 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_usercontent.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webkit_usercontent.js (19 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\webstorage.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\webstorage.js (22 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\whatwg_encoding.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\whatwg_encoding.js (20 ms)
+[2025-10-01 13:22:31] [build-stdout] Extracting D:\dev\codeql\javascript\tools\data\externs\web\window.js
+[2025-10-01 13:22:31] [build-stdout] Done extracting D:\dev\codeql\javascript\tools\data\externs\web\window.js (26 ms)
+[2025-10-01 13:22:31] Plumbing command codeql database trace-command completed.
+[2025-10-01 13:22:31] [PROGRESS] database create> Finalizing database at D:\dev\PUC eng software\software-test\codeql-test\myReactDB.
+[2025-10-01 13:22:31] Running plumbing command: codeql database finalize --no-db-cluster -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB
+[2025-10-01 13:22:31] [PROGRESS] database finalize> Running TRAP import for CodeQL database at D:\dev\PUC eng software\software-test\codeql-test\myReactDB...
+[2025-10-01 13:22:31] Running plumbing command: codeql dataset import --dbscheme=D:\dev\codeql\javascript\semmlecode.javascript.dbscheme -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript D:\dev\PUC eng software\software-test\codeql-test\myReactDB\trap\javascript
+[2025-10-01 13:22:32] Clearing disk cache since the version file D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript\default\cache\version does not exist
+[2025-10-01 13:22:32] Tuple pool not found. Clearing relations with cached strings
+[2025-10-01 13:22:32] Trimming disk cache at D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript\default\cache in mode clear.
+[2025-10-01 13:22:32] Sequence stamp origin is -5997596475744712512
+[2025-10-01 13:22:32] Pausing evaluation to hard-clear memory at sequence stamp o+0
+[2025-10-01 13:22:32] Unpausing evaluation
+[2025-10-01 13:22:32] Pausing evaluation to quickly trim disk at sequence stamp o+1
+[2025-10-01 13:22:32] Unpausing evaluation
+[2025-10-01 13:22:32] Pausing evaluation to zealously trim disk at sequence stamp o+2
+[2025-10-01 13:22:32] Unpausing evaluation
+[2025-10-01 13:22:32] Trimming completed (88ms): Purged everything.
+[2025-10-01 13:22:32] Scanning for files in D:\dev\PUC eng software\software-test\codeql-test\myReactDB\trap\javascript
+[2025-10-01 13:22:32] Found 116 TRAP files (8.27 MiB)
+[2025-10-01 13:22:32] [PROGRESS] dataset import> Importing TRAP files
+[2025-10-01 13:22:32] Importing Calculator.tsx.trap.gz (1 of 116)
+[2025-10-01 13:22:33] Importing _app.tsx.trap.gz (2 of 116)
+[2025-10-01 13:22:33] Importing _document.tsx.trap.gz (3 of 116)
+[2025-10-01 13:22:33] Importing hello.ts.trap.gz (4 of 116)
+[2025-10-01 13:22:33] Importing index.tsx.trap.gz (5 of 116)
+[2025-10-01 13:22:33] Importing es2016.js.trap.gz (6 of 116)
+[2025-10-01 13:22:33] Importing es2017.js.trap.gz (7 of 116)
+[2025-10-01 13:22:33] Importing es3.js.trap.gz (8 of 116)
+[2025-10-01 13:22:33] Importing es5.js.trap.gz (9 of 116)
+[2025-10-01 13:22:33] Importing es6.js.trap.gz (10 of 116)
+[2025-10-01 13:22:33] Importing es6_collections.js.trap.gz (11 of 116)
+[2025-10-01 13:22:33] Importing intl.js.trap.gz (12 of 116)
+[2025-10-01 13:22:33] Importing proxy.js.trap.gz (13 of 116)
+[2025-10-01 13:22:33] Importing bdd.js.trap.gz (14 of 116)
+[2025-10-01 13:22:33] Importing jquery-3.2.js.trap.gz (15 of 116)
+[2025-10-01 13:22:33] Importing should.js.trap.gz (16 of 116)
+[2025-10-01 13:22:33] Importing vows.js.trap.gz (17 of 116)
+[2025-10-01 13:22:33] Importing assert.js.trap.gz (18 of 116)
+[2025-10-01 13:22:33] Importing assert_legacy.js.trap.gz (19 of 116)
+[2025-10-01 13:22:33] Importing buffer.js.trap.gz (20 of 116)
+[2025-10-01 13:22:33] Importing child_process.js.trap.gz (21 of 116)
+[2025-10-01 13:22:33] Importing cluster.js.trap.gz (22 of 116)
+[2025-10-01 13:22:33] Importing console.js.trap.gz (23 of 116)
+[2025-10-01 13:22:33] Importing constants.js.trap.gz (24 of 116)
+[2025-10-01 13:22:33] Importing crypto.js.trap.gz (25 of 116)
+[2025-10-01 13:22:33] Importing dgram.js.trap.gz (26 of 116)
+[2025-10-01 13:22:33] Importing dns.js.trap.gz (27 of 116)
+[2025-10-01 13:22:33] Importing domain.js.trap.gz (28 of 116)
+[2025-10-01 13:22:33] Importing events.js.trap.gz (29 of 116)
+[2025-10-01 13:22:33] Importing fs.js.trap.gz (30 of 116)
+[2025-10-01 13:22:33] Importing globals.js.trap.gz (31 of 116)
+[2025-10-01 13:22:33] Importing http.js.trap.gz (32 of 116)
+[2025-10-01 13:22:33] Importing https.js.trap.gz (33 of 116)
+[2025-10-01 13:22:33] Importing module.js.trap.gz (34 of 116)
+[2025-10-01 13:22:33] Importing net.js.trap.gz (35 of 116)
+[2025-10-01 13:22:33] Importing os.js.trap.gz (36 of 116)
+[2025-10-01 13:22:33] Importing path.js.trap.gz (37 of 116)
+[2025-10-01 13:22:33] Importing process.js.trap.gz (38 of 116)
+[2025-10-01 13:22:33] Importing punycode.js.trap.gz (39 of 116)
+[2025-10-01 13:22:33] Importing querystring.js.trap.gz (40 of 116)
+[2025-10-01 13:22:33] Importing readline.js.trap.gz (41 of 116)
+[2025-10-01 13:22:33] Importing repl.js.trap.gz (42 of 116)
+[2025-10-01 13:22:33] Importing stream.js.trap.gz (43 of 116)
+[2025-10-01 13:22:34] Importing string_decoder.js.trap.gz (44 of 116)
+[2025-10-01 13:22:34] Importing sys.js.trap.gz (45 of 116)
+[2025-10-01 13:22:34] Importing timers.js.trap.gz (46 of 116)
+[2025-10-01 13:22:34] Importing tls.js.trap.gz (47 of 116)
+[2025-10-01 13:22:34] Importing tty.js.trap.gz (48 of 116)
+[2025-10-01 13:22:34] Importing url.js.trap.gz (49 of 116)
+[2025-10-01 13:22:34] Importing util.js.trap.gz (50 of 116)
+[2025-10-01 13:22:34] Importing v8.js.trap.gz (51 of 116)
+[2025-10-01 13:22:34] Importing vm.js.trap.gz (52 of 116)
+[2025-10-01 13:22:34] Importing zlib.js.trap.gz (53 of 116)
+[2025-10-01 13:22:34] Importing jsshell.js.trap.gz (54 of 116)
+[2025-10-01 13:22:34] Importing rhino.js.trap.gz (55 of 116)
+[2025-10-01 13:22:34] Importing spidermonkey.js.trap.gz (56 of 116)
+[2025-10-01 13:22:34] Importing v8.js.trap.gz (57 of 116)
+[2025-10-01 13:22:34] Importing chrome.js.trap.gz (58 of 116)
+[2025-10-01 13:22:34] Importing fetchapi.js.trap.gz (59 of 116)
+[2025-10-01 13:22:34] Importing fileapi.js.trap.gz (60 of 116)
+[2025-10-01 13:22:34] Importing flash.js.trap.gz (61 of 116)
+[2025-10-01 13:22:34] Importing gecko_css.js.trap.gz (62 of 116)
+[2025-10-01 13:22:34] Importing gecko_dom.js.trap.gz (63 of 116)
+[2025-10-01 13:22:34] Importing gecko_event.js.trap.gz (64 of 116)
+[2025-10-01 13:22:34] Importing gecko_ext.js.trap.gz (65 of 116)
+[2025-10-01 13:22:34] Importing gecko_xml.js.trap.gz (66 of 116)
+[2025-10-01 13:22:34] Importing html5.js.trap.gz (67 of 116)
+[2025-10-01 13:22:34] Importing ie_css.js.trap.gz (68 of 116)
+[2025-10-01 13:22:34] Importing ie_dom.js.trap.gz (69 of 116)
+[2025-10-01 13:22:34] Importing ie_event.js.trap.gz (70 of 116)
+[2025-10-01 13:22:34] Importing ie_vml.js.trap.gz (71 of 116)
+[2025-10-01 13:22:34] Importing intl.js.trap.gz (72 of 116)
+[2025-10-01 13:22:34] Importing iphone.js.trap.gz (73 of 116)
+[2025-10-01 13:22:34] Importing mediasource.js.trap.gz (74 of 116)
+[2025-10-01 13:22:34] Importing page_visibility.js.trap.gz (75 of 116)
+[2025-10-01 13:22:34] Importing streamsapi.js.trap.gz (76 of 116)
+[2025-10-01 13:22:34] Importing url.js.trap.gz (77 of 116)
+[2025-10-01 13:22:34] Importing w3c_anim_timing.js.trap.gz (78 of 116)
+[2025-10-01 13:22:34] Importing w3c_batterystatus.js.trap.gz (79 of 116)
+[2025-10-01 13:22:34] Importing w3c_css.js.trap.gz (80 of 116)
+[2025-10-01 13:22:34] Importing w3c_css3d.js.trap.gz (81 of 116)
+[2025-10-01 13:22:34] Importing w3c_device_sensor_event.js.trap.gz (82 of 116)
+[2025-10-01 13:22:34] Importing w3c_dom1.js.trap.gz (83 of 116)
+[2025-10-01 13:22:34] Importing w3c_dom2.js.trap.gz (84 of 116)
+[2025-10-01 13:22:34] Importing w3c_dom3.js.trap.gz (85 of 116)
+[2025-10-01 13:22:34] Importing w3c_dom4.js.trap.gz (86 of 116)
+[2025-10-01 13:22:34] Importing w3c_elementtraversal.js.trap.gz (87 of 116)
+[2025-10-01 13:22:34] Importing w3c_encoding.js.trap.gz (88 of 116)
+[2025-10-01 13:22:34] Importing w3c_event.js.trap.gz (89 of 116)
+[2025-10-01 13:22:34] Importing w3c_event3.js.trap.gz (90 of 116)
+[2025-10-01 13:22:34] Importing w3c_gamepad.js.trap.gz (91 of 116)
+[2025-10-01 13:22:34] Importing w3c_geolocation.js.trap.gz (92 of 116)
+[2025-10-01 13:22:34] Importing w3c_indexeddb.js.trap.gz (93 of 116)
+[2025-10-01 13:22:34] Importing w3c_midi.js.trap.gz (94 of 116)
+[2025-10-01 13:22:34] Importing w3c_navigation_timing.js.trap.gz (95 of 116)
+[2025-10-01 13:22:34] Importing w3c_permissions.js.trap.gz (96 of 116)
+[2025-10-01 13:22:34] Importing w3c_pointer_events.js.trap.gz (97 of 116)
+[2025-10-01 13:22:34] Importing w3c_range.js.trap.gz (98 of 116)
+[2025-10-01 13:22:34] Importing w3c_requestidlecallback.js.trap.gz (99 of 116)
+[2025-10-01 13:22:34] Importing w3c_rtc.js.trap.gz (100 of 116)
+[2025-10-01 13:22:34] Importing w3c_screen_orientation.js.trap.gz (101 of 116)
+[2025-10-01 13:22:34] Importing w3c_selectors.js.trap.gz (102 of 116)
+[2025-10-01 13:22:34] Importing w3c_serviceworker.js.trap.gz (103 of 116)
+[2025-10-01 13:22:34] Importing w3c_touch_event.js.trap.gz (104 of 116)
+[2025-10-01 13:22:34] Importing w3c_webcrypto.js.trap.gz (105 of 116)
+[2025-10-01 13:22:34] Importing w3c_xml.js.trap.gz (106 of 116)
+[2025-10-01 13:22:34] Importing webgl.js.trap.gz (107 of 116)
+[2025-10-01 13:22:35] Importing webkit_css.js.trap.gz (108 of 116)
+[2025-10-01 13:22:35] Importing webkit_dom.js.trap.gz (109 of 116)
+[2025-10-01 13:22:35] Importing webkit_event.js.trap.gz (110 of 116)
+[2025-10-01 13:22:35] Importing webkit_notifications.js.trap.gz (111 of 116)
+[2025-10-01 13:22:35] Importing webkit_usercontent.js.trap.gz (112 of 116)
+[2025-10-01 13:22:35] Importing webstorage.js.trap.gz (113 of 116)
+[2025-10-01 13:22:35] Importing whatwg_encoding.js.trap.gz (114 of 116)
+[2025-10-01 13:22:35] Importing window.js.trap.gz (115 of 116)
+[2025-10-01 13:22:35] Importing metadata.trap.gz (116 of 116)
+[2025-10-01 13:22:35] [PROGRESS] dataset import> Merging relations
+[2025-10-01 13:22:35] Merging 1 fragment for 'files'.
+[2025-10-01 13:22:35] Merged 427 bytes for 'files'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'folders'.
+[2025-10-01 13:22:35] Merged 73 bytes for 'folders'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'containerparent'.
+[2025-10-01 13:22:35] Merged 328 bytes for 'containerparent'.
+[2025-10-01 13:22:35] Merging 2 fragments for 'locations_default'.
+[2025-10-01 13:22:35] Merged 815239 bytes (796.13 KiB) for 'locations_default'.
+[2025-10-01 13:22:35] Merging 3 fragments for 'hasLocation'.
+[2025-10-01 13:22:35] Merged 520281 bytes (508.09 KiB) for 'hasLocation'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'extraction_data'.
+[2025-10-01 13:22:35] Merged 532 bytes for 'extraction_data'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'scopes'.
+[2025-10-01 13:22:35] Merged 4141 bytes (4.04 KiB) for 'scopes'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'indentation'.
+[2025-10-01 13:22:35] Merged 27027 bytes (26.39 KiB) for 'indentation'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'numlines'.
+[2025-10-01 13:22:35] Merged 1614 bytes (1.58 KiB) for 'numlines'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'tokeninfo'.
+[2025-10-01 13:22:35] Merged 460198 bytes (449.41 KiB) for 'tokeninfo'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'toplevels'.
+[2025-10-01 13:22:35] Merged 239 bytes for 'toplevels'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'scopenodes'.
+[2025-10-01 13:22:35] Merged 8335 bytes (8.14 KiB) for 'scopenodes'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'scopenesting'.
+[2025-10-01 13:22:35] Merged 4295 bytes (4.19 KiB) for 'scopenesting'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'is_module'.
+[2025-10-01 13:22:35] Merged 92 bytes for 'is_module'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'is_es2015_module'.
+[2025-10-01 13:22:35] Merged 22 bytes for 'is_es2015_module'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'variables'.
+[2025-10-01 13:22:35] Merged 39544 bytes (38.62 KiB) for 'variables'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'local_type_names'.
+[2025-10-01 13:22:35] Merged 81 bytes for 'local_type_names'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'local_namespace_names'.
+[2025-10-01 13:22:35] Merged 79 bytes for 'local_namespace_names'.
+[2025-10-01 13:22:35] Merging 1 fragment for 'stmts'.
+[2025-10-01 13:22:36] Merged 102503 bytes (100.10 KiB) for 'stmts'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'stmt_containers'.
+[2025-10-01 13:22:36] Merged 46736 bytes (45.64 KiB) for 'stmt_containers'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'exprs'.
+[2025-10-01 13:22:36] Merged 413512 bytes (403.82 KiB) for 'exprs'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'enclosing_stmt'.
+[2025-10-01 13:22:36] Merged 83526 bytes (81.57 KiB) for 'enclosing_stmt'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'expr_containers'.
+[2025-10-01 13:22:36] Merged 92394 bytes (90.23 KiB) for 'expr_containers'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'literals'.
+[2025-10-01 13:22:36] Merged 70899 bytes (69.24 KiB) for 'literals'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'regexpterm'.
+[2025-10-01 13:22:36] Merged 723 bytes for 'regexpterm'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'regexp_const_value'.
+[2025-10-01 13:22:36] Merged 373 bytes for 'regexp_const_value'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'decl'.
+[2025-10-01 13:22:36] Merged 13331 bytes (13.02 KiB) for 'decl'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'typedecl'.
+[2025-10-01 13:22:36] Merged 63 bytes for 'typedecl'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'namespacedecl'.
+[2025-10-01 13:22:36] Merged 61 bytes for 'namespacedecl'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'array_size'.
+[2025-10-01 13:22:36] Merged 40 bytes for 'array_size'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'bind'.
+[2025-10-01 13:22:36] Merged 14694 bytes (14.35 KiB) for 'bind'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'typeexprs'.
+[2025-10-01 13:22:36] Merged 137 bytes for 'typeexprs'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'properties'.
+[2025-10-01 13:22:36] Merged 590 bytes for 'properties'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'entry_cfg_node'.
+[2025-10-01 13:22:36] Merged 8888 bytes (8.68 KiB) for 'entry_cfg_node'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'exit_cfg_node'.
+[2025-10-01 13:22:36] Merged 8888 bytes (8.68 KiB) for 'exit_cfg_node'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'successor'.
+[2025-10-01 13:22:36] Merged 166396 bytes (162.50 KiB) for 'successor'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'guard_node'.
+[2025-10-01 13:22:36] Merged 163 bytes for 'guard_node'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'filetype'.
+[2025-10-01 13:22:36] Merged 246 bytes for 'filetype'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'extraction_time'.
+[2025-10-01 13:22:36] Merged 14394 bytes (14.06 KiB) for 'extraction_time'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'has_type_keyword'.
+[2025-10-01 13:22:36] Merged 23 bytes for 'has_type_keyword'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'is_arguments_object'.
+[2025-10-01 13:22:36] Merged 4003 bytes (3.91 KiB) for 'is_arguments_object'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'typebind'.
+[2025-10-01 13:22:36] Merged 39 bytes for 'typebind'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'comments'.
+[2025-10-01 13:22:36] Merged 37277 bytes (36.40 KiB) for 'comments'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'next_token'.
+[2025-10-01 13:22:36] Merged 20359 bytes (19.88 KiB) for 'next_token'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'is_abstract_member'.
+[2025-10-01 13:22:36] Merged 21 bytes for 'is_abstract_member'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc'.
+[2025-10-01 13:22:36] Merged 20253 bytes (19.78 KiB) for 'jsdoc'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_tags'.
+[2025-10-01 13:22:36] Merged 100265 bytes (97.92 KiB) for 'jsdoc_tags'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_tag_descriptions'.
+[2025-10-01 13:22:36] Merged 7319 bytes (7.15 KiB) for 'jsdoc_tag_descriptions'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_tag_names'.
+[2025-10-01 13:22:36] Merged 14406 bytes (14.07 KiB) for 'jsdoc_tag_names'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_type_exprs'.
+[2025-10-01 13:22:36] Merged 127555 bytes (124.57 KiB) for 'jsdoc_type_exprs'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'is_externs'.
+[2025-10-01 13:22:36] Merged 223 bytes for 'is_externs'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_prefix_qualifier'.
+[2025-10-01 13:22:36] Merged 1894 bytes (1.85 KiB) for 'jsdoc_prefix_qualifier'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_errors'.
+[2025-10-01 13:22:36] Merged 1139 bytes (1.11 KiB) for 'jsdoc_errors'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_record_field_name'.
+[2025-10-01 13:22:36] Merged 1597 bytes (1.56 KiB) for 'jsdoc_record_field_name'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'jsdoc_has_new_parameter'.
+[2025-10-01 13:22:36] Merged 35 bytes for 'jsdoc_has_new_parameter'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'is_nodejs'.
+[2025-10-01 13:22:36] Merged 86 bytes for 'is_nodejs'.
+[2025-10-01 13:22:36] Merging 1 fragment for 'sourceLocationPrefix'.
+[2025-10-01 13:22:36] Merged 17 bytes for 'sourceLocationPrefix'.
+[2025-10-01 13:22:36] Saving string and id pools to disk.
+[2025-10-01 13:22:37] Finished importing TRAP files.
+[2025-10-01 13:22:37] Read 43.72 MiB of uncompressed TRAP data.
+[2025-10-01 13:22:37] Uncompressed relation data size: 13.46 MiB
+[2025-10-01 13:22:37] Relation data size: 3.11 MiB (merge rate: 2.03 MiB/s)
+[2025-10-01 13:22:37] String pool size: 4.78 MiB
+[2025-10-01 13:22:37] ID pool size: 13.00 MiB
+[2025-10-01 13:22:37] [PROGRESS] dataset import> Finished writing database (relations: 3.11 MiB; string pool: 4.78 MiB).
+[2025-10-01 13:22:37] Pausing evaluation to close the cache at sequence stamp o+123
+[2025-10-01 13:22:37] The disk cache is freshly trimmed; leave it be.
+[2025-10-01 13:22:37] Unpausing evaluation
+[2025-10-01 13:22:37] Plumbing command codeql dataset import completed.
+[2025-10-01 13:22:37] [PROGRESS] database finalize> TRAP import complete (6s).
+[2025-10-01 13:22:37] Running plumbing command: codeql database cleanup -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB
+[2025-10-01 13:22:38] [PROGRESS] database cleanup> Cleaning up existing TRAP files after import...
+[2025-10-01 13:22:38] [PROGRESS] database cleanup> TRAP files cleaned up (21ms).
+[2025-10-01 13:22:38] [PROGRESS] database cleanup> Cleaning up scratch directory...
+[2025-10-01 13:22:38] [PROGRESS] database cleanup> Scratch directory cleaned up (0ms).
+[2025-10-01 13:22:38] Running plumbing command: codeql dataset cleanup -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript
+[2025-10-01 13:22:38] [PROGRESS] dataset cleanup> Cleaning up dataset in D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript.
+[2025-10-01 13:22:38] Trimming disk cache at D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript\default\cache in mode trim.
+[2025-10-01 13:22:38] Sequence stamp origin is -5997596447114512915
+[2025-10-01 13:22:38] Pausing evaluation to quickly trim memory at sequence stamp o+0
+[2025-10-01 13:22:38] Unpausing evaluation
+[2025-10-01 13:22:38] Pausing evaluation to zealously trim disk at sequence stamp o+1
+[2025-10-01 13:22:38] Unpausing evaluation
+[2025-10-01 13:22:38] Trimming completed (3ms): Trimmed disposable data from cache.
+[2025-10-01 13:22:38] Pausing evaluation to close the cache at sequence stamp o+2
+[2025-10-01 13:22:38] The disk cache is freshly trimmed; leave it be.
+[2025-10-01 13:22:38] Unpausing evaluation
+[2025-10-01 13:22:38] [PROGRESS] dataset cleanup> Trimmed disposable data from cache.
+[2025-10-01 13:22:38] [PROGRESS] dataset cleanup> Finalizing dataset in D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript
+[2025-10-01 13:22:38] [DETAILS] dataset cleanup> Finished deleting ID pool from D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript (2ms).
+[2025-10-01 13:22:38] Plumbing command codeql dataset cleanup completed.
+[2025-10-01 13:22:38] Plumbing command codeql database cleanup completed with status 0.
+[2025-10-01 13:22:38] [PROGRESS] database finalize> Finished zipping source archive (243.29 KiB).
+[2025-10-01 13:22:38] Plumbing command codeql database finalize completed.
+[2025-10-01 13:22:38] [PROGRESS] database create> Successfully created database at D:\dev\PUC eng software\software-test\codeql-test\myReactDB.
+[2025-10-01 13:22:38] Terminating normally.

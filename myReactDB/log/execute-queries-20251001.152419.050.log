@@ -1,0 +1,41 @@
+[2025-10-01 15:24:19] This is codeql execute queries -J-Xmx1800M --off-heap-ram=1542 --verbosity=progress --logdir=D:\dev\PUC eng software\software-test\codeql-test\myReactDB\log --evaluator-log-level=5 --warnings=show --qlconfig-file=D:\dev\PUC eng software\software-test\codeql-test\qlconfig.yml --dynamic-join-order-mode=none --no-rerun --output=D:\dev\PUC eng software\software-test\codeql-test\myReactDB\results -- D:\dev\PUC eng software\software-test\codeql-test\myReactDB\db-javascript \ \ \ codeql/javascript-queries
+[2025-10-01 15:24:19] Calling plumbing command: codeql resolve queries --qlconfig-file=D:\dev\PUC eng software\software-test\codeql-test\qlconfig.yml --format=json -- \ \ \ codeql/javascript-queries
+[2025-10-01 15:24:20] [SPAMMY] resolve queries> Scanning for QL files at D:\.
+[2025-10-01 15:24:21] [PROGRESS] resolve queries> Recording pack reference getting-started/codeql-extra-queries-javascript at D:\$RECYCLE.BIN\S-1-5-21-2474532506-1970004105-2405237018-1001\$RGKFBYM.
+[2025-10-01 15:25:30] [PROGRESS] resolve queries> Recording pack reference codeql/cpp-downgrades at D:\dev\codeql\cpp\downgrades.
+[2025-10-01 15:25:30] [PROGRESS] resolve queries> Recording pack reference codeql/csharp-downgrades at D:\dev\codeql\csharp\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/go-downgrades at D:\dev\codeql\go\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/java-downgrades at D:\dev\codeql\java\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/javascript-downgrades at D:\dev\codeql\javascript\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference legacy-upgrades at D:\dev\codeql\legacy-upgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/python-downgrades at D:\dev\codeql\python\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/ruby-downgrades at D:\dev\codeql\ruby\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/rust-downgrades at D:\dev\codeql\rust\downgrades.
+[2025-10-01 15:25:31] [PROGRESS] resolve queries> Recording pack reference codeql/swift-downgrades at D:\dev\codeql\swift\downgrades.
+[2025-10-01 15:27:52] [PROGRESS] resolve queries> Recording pack reference getting-started/codeql-extra-queries-javascript at D:\dev\PUC eng software\software-test\codeql-test\codeql-custom-queries-javascript.
+[2025-10-01 15:27:59] [PROGRESS] resolve queries> Recording pack reference (anonymous QL pack at \anything) at \.
+[2025-10-01 15:27:59] [SPAMMY] resolve queries> Found 309 QL files in D:\.
+[2025-10-01 15:27:59] [SPAMMY] resolve queries> Scanning for QL files at D:\.
+[2025-10-01 15:28:03] [PROGRESS] resolve queries> Recording pack reference (anonymous QL pack at \anything) at \.
+[2025-10-01 15:28:03] [SPAMMY] resolve queries> Found 309 QL files in D:\.
+[2025-10-01 15:28:03] [SPAMMY] resolve queries> Scanning for QL files at D:\.
+[2025-10-01 15:28:07] [PROGRESS] resolve queries> Recording pack reference (anonymous QL pack at \anything) at \.
+[2025-10-01 15:28:07] [SPAMMY] resolve queries> Found 309 QL files in D:\.
+[2025-10-01 15:28:23] Exception caught at top level: Query pack codeql/javascript-queries cannot be found. Check the spelling of the pack.
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.resolveQuerySpecifier(ResolveQueriesCommand.java:298)
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.executeJSON(ResolveQueriesCommand.java:211)
+                      com.semmle.cli2.resolve.ResolveQueriesCommand.executeJSON(ResolveQueriesCommand.java:68)
+                      com.semmle.cli2.picocli.SimpleJsonSubcommand.executeInsistingOnJSONWithExistingMessages(SimpleJsonSubcommand.java:121)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:444)
+                      com.semmle.cli2.picocli.SimpleJsonSubcommand.executeInsistingOnJSON(SimpleJsonSubcommand.java:110)
+                      com.semmle.cli2.picocli.PlumbingRunner.call(PlumbingRunner.java:61)
+                      com.semmle.cli2.picocli.SubcommandCommon.callPlumbingInProcess(SubcommandCommon.java:170)
+                      com.semmle.cli2.execute.ExecuteQueriesCommand.executeSubcommand(ExecuteQueriesCommand.java:424)
+                      com.semmle.cli2.picocli.SubcommandCommon.lambda$executeSubcommandWithMessages$5(SubcommandCommon.java:892)
+                      com.semmle.cli2.picocli.SubcommandCommon.withCompilationMessages(SubcommandCommon.java:444)
+                      com.semmle.cli2.picocli.SubcommandCommon.executeSubcommandWithMessages(SubcommandCommon.java:890)
+                      com.semmle.cli2.picocli.SubcommandCommon.toplevelMain(SubcommandCommon.java:777)
+                      com.semmle.cli2.picocli.SubcommandCommon.call(SubcommandCommon.java:757)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:238)
+                      com.semmle.cli2.picocli.SubcommandMaker.runMain(SubcommandMaker.java:259)
+                      com.semmle.cli2.CodeQL.main(CodeQL.java:113)

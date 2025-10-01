@@ -1,0 +1,12 @@
+---
+sourceLocationPrefix: D:\dev\PUC eng software\software-test\codeql-test\src
+baselineLinesOfCode: 162
+unicodeNewlines: true
+columnKind: utf16
+primaryLanguage: javascript
+creationMetadata:
+  cliVersion: 2.23.1
+  creationTime: 2025-10-01T16:22:23.699095300Z
+overlayBaseDatabase: false
+overlayDatabase: false
+finalised: true
