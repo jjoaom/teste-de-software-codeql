@@ -18,11 +18,11 @@ jobs:
         with:
           languages: javascript
 
-      - name: Add custom CodeQL pack
-        run: |
-          codeql pack install ./codeql-custom-queries-javascript
+      # Agora sim o CodeQL CLI está disponível
+      - name: Install custom CodeQL pack
+        run: codeql pack install codeql-custom-queries-javascript
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v3
         with:
-          extra-queries: ./codeql-custom-queries-javascript/src
+          extra-queries: codeql-custom-queries-javascript/src
